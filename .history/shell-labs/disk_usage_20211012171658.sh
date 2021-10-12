@@ -16,8 +16,8 @@ _disk_usage=`df -h --output=pcent $disk_part  | sed 1d | cut -d "%" -f1`
 
 _sendmail () {
     echo "Subject: Disk usage of $_hostname servers" > email.txt
-    echo " Sent on `date`" >> email.txt
-    echo "The disk usage of $_hostname is above 50%" >> email.txt
+    echo "The disk usage of $_hostname is above 50%"
+    echo "`date`" >> email.txt
     echo "`df -h $disk_part`" >> email.txt
     echo "FROM Linux server $_hostname" >> email.txt
     sendmail $_email < email.txt
@@ -25,7 +25,7 @@ _sendmail () {
 
 if [ $_disk_usage -gt 50 ]
 then
-    _sendmail
+    echo "Disk usage > 50%"; _sendmail
 else
     echo "Disk usage <= 50%" >> /dev/null
 fi

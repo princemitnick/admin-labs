@@ -1,0 +1,3 @@
+Subject : Sending email using sendmail
+Testing email body
+Hello

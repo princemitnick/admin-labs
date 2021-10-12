@@ -1,0 +1,13 @@
+#!/bin/bash
+#Desc : Le but de ce script est de verifier le pourcentage d'utilisation du disque.
+#       si l'utilisation est > a 50%, l'administrateur doit etre notifie via un email.
+
+echo "Disk Usage"
+
+chaineZ=abcABC123ABCabc
+
+echo ${chaineZ:0}
+echo ${chaineZ:1}
+echo ${chaineZ:2}
+
+echo ${#chaineZ}

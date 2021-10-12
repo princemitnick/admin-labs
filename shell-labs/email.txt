@@ -1,0 +1,6 @@
+Subject: Disk usage of test servers
+ Sent on Tue 12 Oct 2021 05:18:31 PM EDT
+The disk usage of test is above 50%
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda4       477G  345G  133G  73% /
+FROM Linux server test
