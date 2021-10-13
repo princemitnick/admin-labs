@@ -7,7 +7,7 @@
 # - only root can execute this script
 
 _hostname=`hostname`
-_disk_part="/" #var that represents the root partition
+_disk_part="/" #root partition
 _email="ingjeanbaptiste@gmail.com"
 _date=`date`
 _disk_usage=`df -h --output=pcent $_disk_part  | sed 1d | cut -d "%" -f1`
@@ -15,13 +15,21 @@ _disk_usage=`df -h --output=pcent $_disk_part  | sed 1d | cut -d "%" -f1`
 #sendmail function
 
 _notify_admins () {
-    echo "Subject : Disk usage of $_hostname servers on `date`" > email.txt
     msg="""
-    Please checkout the disk usage of the root partition,
+    subject: Disk usage of $_hostname servers
+    `date`,
+    The disk usage of $_hostname is above 50%,
     `df -h $_disk_part`,
+
     FROM $_hostname server
     """
-    echo "$msg" >> email.txt ; sendmail $_email < email.txt && rm email.txt
+    echo "$msg" >> email.txt
+    #echo " Sent on `date`" >> email.txt
+    #echo "The disk usage of $_hostname is above 50%" >> email.txt
+    #echo "`df -h $_disk_part`" >> email.txt
+    #echo "FROM Linux server $_hostname" >> email.txt
+    #sendmail $_email < email.txt
+    #rm email.txt
     exit 0
 }
 

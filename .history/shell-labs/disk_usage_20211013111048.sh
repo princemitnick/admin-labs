@@ -15,13 +15,14 @@ _disk_usage=`df -h --output=pcent $_disk_part  | sed 1d | cut -d "%" -f1`
 #sendmail function
 
 _notify_admins () {
-    echo "Subject : Disk usage of $_hostname servers on `date`" > email.txt
+    echo "Subject : Disk usage of $_hostname servers" > email.txt
     msg="""
-    Please checkout the disk usage of the root partition,
-    `df -h $_disk_part`,
-    FROM $_hostname server
+        `date`,
+        The disk usage of $_hostname is above 50%,
+        `df -h $_disk_part`,
+        FROM $_hostname server
     """
-    echo "$msg" >> email.txt ; sendmail $_email < email.txt && rm email.txt
+    echo "$msg" >> email.txt ; sendmail $_email < email.txt ; rm email.txt
     exit 0
 }
 
