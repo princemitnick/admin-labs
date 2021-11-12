@@ -1,0 +1,37 @@
+Every metric has a name 
+"node_cpu_seconds_total"
+
+Prometheus uses labels to provide a dimensional data model
+
+node_cpu_seconds_total{cpu="0"}
+node_cpu_seconds_total{cpu="0",instance="172.25.112.107:9100",mode="idle"} 287.75
+
+
+Metric Types : 
+Metric Types refer to different ways in which exporters represent the metric data they provide
+
+Counter : 
+A counter is a single number that can only increase or be reset to zero.
+Counter represents cumilative values
+
+node_cpu_seconds_total[5m]
+
+Gauge
+A gauge is a single number that can be increase or decrease overtime
+
+Histogram : 
+A Histogram counts the numbers of observations/events that fall into a 
+set of configurable buckets, each with its own separate time series.
+
+A Histogram will use labels to differentiate between buckets.
+
+http_request_duration_seconds_bucket{le="0.3"}
+
+
+Setup node exorter for grafana
+
+variables
+
+instance : label_values(node_exporter_build_info{job="node"}, instance)
+
+label_values(node_uname_info{job="node"}, instance)

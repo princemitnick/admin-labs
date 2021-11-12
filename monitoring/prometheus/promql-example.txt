@@ -1,0 +1,63 @@
+##
+CPU Usage 
+sum(rate(node_cpu_seconds_total{instance='webserver:9100',mode!='idle'}[5m])) * 100
+
+(
+  (1 - rate(node_cpu_seconds_total{job="node", mode="idle", instance="172.25.40.190:9100"}[$__interval]))
+/ ignoring(cpu) group_left
+  count without (cpu)( node_cpu_seconds_total{job="node", mode="idle", instance="172.25.40.190:9100"})
+)
+
+
+
+##
+Memory Usage 
+100 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100
+
+(
+  node_memory_MemTotal_bytes{job="node", instance="$instance"}
+-
+  node_memory_MemFree_bytes{job="node", instance="$instance"}
+-
+  node_memory_Buffers_bytes{job="node", instance="$instance"}
+-
+  node_memory_Cached_bytes{job="node", instance="$instance"}
+)
+
+
+100 -
+(
+  avg(node_memory_MemAvailable_bytes{job="node", instance="$instance"})
+/
+  avg(node_memory_MemTotal_bytes{job="node", instance="$instance"})
+* 100
+)
+
+
+# DIsk IO 
+
+rate(node_disk_read_bytes_total{job="node", instance="$instance", device!=""}[$__interval])
+
+rate(node_disk_written_bytes_total{job="node", instance="$instance", device!=""}[$__interval])
+
+rate(node_disk_io_time_seconds_total{job="node", instance="$instance", device!=""}[$__interval])
+
+
+
+###
+DISK Space Usage
+
+sum(
+  max by (device) (
+    node_filesystem_size_bytes{job="node", instance="$instance", fstype!=""}
+  -
+    node_filesystem_avail_bytes{job="node", instance="$instance", fstype!=""}
+  )
+)
+
+sum(
+  max by (device) (
+    node_filesystem_avail_bytes{job="node", instance="$instance", fstype!=""}
+  )
+)
+
