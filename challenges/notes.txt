@@ -1,0 +1,11 @@
+Monitoring
+Prometheus + Graphana for Cange, HSN, HUM, Hinche 
+
+Graph for http request
+Graph for network traffic 
+Graph for authentication 
+Graph for outbound and inbound traffic  
+Graph for port traffic 
+
+
+
