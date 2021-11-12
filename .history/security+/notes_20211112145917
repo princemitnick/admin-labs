@@ -1,0 +1,14 @@
+################
+Defining Indicators of Compromise: Indications, or signs, that unauthorized activity has compromised an information system
+
+Commonly Observed IOCs 
+* Unusual outbound network traffic
+* Anomalies in privileged user account activity
+* Geographical irregularities in network traffic
+* Account login red flags 
+* Increases in database read volumes
+* HTML Response size increases 
+* Large numbers of request for the same files
+* Mismatched port-application traffic, including encrypted traffic over plain ports 
+* Suspicious registry or system file changes
+
