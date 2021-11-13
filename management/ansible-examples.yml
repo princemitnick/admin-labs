@@ -1,0 +1,38 @@
+  - name : Download node_exporter package
+    get_url:
+      url: https://github.com/prometheus/node_exporter/releases/download/v1.2.2/node_exporter-1.2.2.linux-amd64.tar.gz
+      dest: /home/prince/node_exporter/node_exporter.tar.gz
+
+  - name: Extract node_exporter file
+    unarchive: 
+      src: /home/prince/node_exporter/node_exporter.tar.gz
+      dest: /home/prince/node_exporter/node_exporter.1.1.linux/
+      remote_src: yes
+
+  - name: Copy node_exporter binary to /usr/local/bin/
+    copy:
+      src: ./node_exporter
+      dest: /usr/local/bin/node_exporter
+
+  - name: Change owner and group /etc/node_exporter/node_exporter file
+    file:
+      path: /usr/local/bin/node_exporter
+      owner: node_exporter
+      group: node_exporter
+      mode: '755'
+  
+  - name: Copy node_exporter service to /etc/systemd/system/
+    copy:
+      src: ./node_exporter.service
+      dest: /etc/systemd/system/node_exporter.service
+  
+  - name: Reload system daemon
+    systemd:
+      daemon_reload: yes
+  
+  - name: Start node_exporter service
+    systemd:
+      name: node_exporter
+      state: started
+      enabled: yes
+
