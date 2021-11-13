@@ -1,4 +1,4 @@
-- hosts: bureaucentral
+- hosts: test
   become: yes 
   tasks:
   - action: ping
@@ -16,7 +16,7 @@
   
   - name: Copy blackbox_exporter binary to /usr/local/bin/
     copy:
-      src: ./blackbox_exporter/blackbox_exporter
+      src: ./blackbox_exporter
       dest: /usr/local/bin/blackbox_exporter
       owner: blackbox_exporter
       group: blackbox_exporter
@@ -24,7 +24,7 @@
   
   - name: Copy blackbox.yml to /etc/blackbox/
     copy:
-      src: ./blackbox_exporter/blackbox.yml
+      src: ./blackbox.yml
       dest: /etc/blackbox/blackbox.yml
       owner: blackbox_exporter
       group: blackbox_exporter
@@ -32,7 +32,7 @@
   
   - name: Copy blackbox_exporter.service to /etc/systemd/system/
     copy:
-      src: ./blackbox_exporter/blackbox_exporter.service
+      src: ./blackbox_exporter.service
       dest: /etc/systemd/system/blackbox_exporter.service
   
   - name: Reload daemon system
@@ -44,3 +44,6 @@
       name: blackbox_exporter
       state: started
       enabled: yes
+
+  - name: blackbox_exporter service status
+    shell: systemctl status blackbox_exporter

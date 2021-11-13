@@ -28,3 +28,7 @@ all:
     hum.kanj:
       ansible_host: 190.115.165.146
       ansible_port: 4002
+    thomonde.openmrs:
+      ansible_host: 172.25.70.55
+    thomonde.kanj:
+      ansible_host: 172.25.177.79
