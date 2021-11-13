@@ -1,0 +1,46 @@
+- hosts: bureaucentral
+  become: yes 
+  tasks:
+  - action: ping
+  - name: Create blackbox_exporter user
+    user:
+      name: blackbox_exporter
+      shell: /bin/false
+      createhome: no 
+      state: present
+  
+  - name: Create blackbox folder
+    file:
+      path: /etc/blackbox
+      state: directory
+  
+  - name: Copy blackbox_exporter binary to /usr/local/bin/
+    copy:
+      src: ./blackbox_exporter/blackbox_exporter
+      dest: /usr/local/bin/blackbox_exporter
+      owner: blackbox_exporter
+      group: blackbox_exporter
+      mode: '0755'
+  
+  - name: Copy blackbox.yml to /etc/blackbox/
+    copy:
+      src: ./blackbox_exporter/blackbox.yml
+      dest: /etc/blackbox/blackbox.yml
+      owner: blackbox_exporter
+      group: blackbox_exporter
+      mode: '0755'
+  
+  - name: Copy blackbox_exporter.service to /etc/systemd/system/
+    copy:
+      src: ./blackbox_exporter/blackbox_exporter.service
+      dest: /etc/systemd/system/blackbox_exporter.service
+  
+  - name: Reload daemon system
+    systemd:
+      daemon_reload: yes
+  
+  - name: Start and enable blackbox_exporter service
+    systemd:
+      name: blackbox_exporter
+      state: started
+      enabled: yes
