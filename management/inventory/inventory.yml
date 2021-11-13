@@ -3,4 +3,28 @@ all:
     admin:
       ansible_host: 172.25.75.198
     test:
-       ansible_host: 172.25.102.53
+      ansible_host: 172.25.102.53
+    cange.hsn:
+      ansible_host: 172.25.196.60
+    cange.openmrs:
+      ansible_host: 172.25.62.234
+    bureaucentral:
+      ansible_host: 172.25.67.109
+    hsn.hsn:
+      ansible_host: 172.25.243.175
+    hsn.openmrs:
+      ansible_host: 172.25.112.107
+    uictl:
+      ansible_host: 161.0.135.27
+    lacolline.base:
+      ansible_host: 172.25.221.183
+    lacolline.openmrs:
+      ansible_host: 172.25.157.88
+    boucancarre:
+      ansible_host: 172.25.8.63
+      ansible_port: 2222
+    belladere:
+      ansible_host: 172.25.129.155
+    hum.kanj:
+      ansible_host: 190.115.165.146
+      ansible_port: 4002
