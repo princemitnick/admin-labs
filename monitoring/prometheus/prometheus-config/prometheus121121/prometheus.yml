@@ -1,0 +1,82 @@
+# my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: "prometheus"
+    static_configs:
+    - targets: ["localhost:9090"]
+
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+  - job_name: 'Cange HSN Server'
+    static_configs:
+    - targets: ['172.25.196.60:9100']
+
+  - job_name: 'Cange OpenMRS Server'
+    static_configs:
+    - targets: ['172.25.62.234:9100']
+
+  - job_name: 'Bureau Central Server'
+    static_configs:
+    - targets: ['172.25.67.109:9100']
+
+  - job_name: 'HSN Server'
+    static_configs:
+    - targets: ['172.25.243.175:9100']
+
+
+  - job_name: 'HSN OpenMRS Server'
+    static_configs:
+    - targets: ['172.25.112.107:9100']
+
+
+  - job_name: 'UNIFI Controler Server'
+    static_configs:
+    - targets: ['161.0.135.27:9100']
+
+
+  - job_name: 'Test_L Server'
+    static_configs:
+    - targets: ['172.25.40.190:9100']
+
+
+  - job_name: 'Bluehost Server'
+    static_configs:
+    - targets: ['142.4.16.172:9100']
+
+
+  - job_name: 'Lacolline Base Server'
+    static_configs:
+    - targets: ['172.25.221.183:9100']
+
+  - job_name: 'Lacolline OpenMRS Server'
+    static_configs:
+    - targets: ['172.25.157.88:9100']
+
+  - job_name: 'Boucan Carre Server'
+    static_configs:
+    - targets: ['172.25.8.63:9100']
+
+  - job_name: 'Belladere Cange Server'
+    static_configs:
+    - targets: ['172.25.129.155:9100']
+
