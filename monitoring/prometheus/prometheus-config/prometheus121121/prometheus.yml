@@ -116,6 +116,9 @@ scrape_configs:
         #Where Blackbox exporter was installed plust port
         replacement: 172.25.75.198:9115
 
+
+######################### UNIFI Controller Blackbox Exporter##################
+
   - job_name: 'ICMP UNIFI Controller'
     metrics_path: /probe
     params:
@@ -151,3 +154,42 @@ scrape_configs:
       - target_label: __address__
         #Where Blackbox exporter was installed plust port
         replacement: 161.0.135.27:9115
+  
+################## Test Blackbox exporter
+
+
+  - job_name: 'ICMP Test Server'
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    static_configs:
+      - targets:
+        # The hostname or IP address of the host you are targeting
+        - 172.25.40.190
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        # Where Blackbox exporter was installed plust port
+        replacement: 172.25.40.190:9115
+
+
+  # Using the [http_2xx] module
+  - job_name: 'TCP Test Server'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+        # The http host you are targeting
+        - https://172.25.40.190:8443
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        #Where Blackbox exporter was installed plust port
+        replacement: 172.25.40.190:9115
