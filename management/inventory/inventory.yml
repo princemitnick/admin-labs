@@ -1,0 +1,6 @@
+all:
+  hosts:
+    admin:
+      ansible_host: 172.25.75.198
+    test:
+       ansible_host: 172.25.102.53
