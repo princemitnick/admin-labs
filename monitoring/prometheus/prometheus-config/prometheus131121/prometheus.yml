@@ -93,46 +93,10 @@ scrape_configs:
     - targets: ['172.25.177.79:9100']
 
 
-  - job_name: 'ICMP Prometheus'
-    metrics_path: /probe
-    params:
-      module: [icmp]
-    static_configs:
-      - targets:
-        # The hostname or IP address of the host you are targeting
-        - 172.25.75.198
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        # Where Blackbox exporter was installed plust port
-        replacement: 172.25.75.198:9115
-
-
-  # Using the [http_2xx] module
-  - job_name: 'TCP Prometheus'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.75.198
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.75.198:9115
-
 
 ######################### UNIFI Controller Blackbox Exporter##################
 
-  - job_name: 'ICMP UNIFI Controller'
+  - job_name: 'UI Controller'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -149,28 +113,10 @@ scrape_configs:
         # Where Blackbox exporter was installed plust port
         replacement: 161.0.135.27:9115
 
-
-  # Using the [http_2xx] module
-  - job_name: 'TCP UNIFI Controller'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - https://161.0.135.27:8443
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 161.0.135.27:9115
   
 ################## TEST_L Blackbox exporter ##################################
 
-  - job_name: 'ICMP Test_L Server'
+  - job_name: 'Test_L'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -188,27 +134,9 @@ scrape_configs:
         replacement: 172.25.40.190:9115
 
 
-  # Using the [http_2xx] module
-  - job_name: 'TCP Test_L Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.40.190
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.40.190:9115
-
 
 ######################## TEST Blackbox Exporter ############################
-  - job_name: 'ICMP Test Server'
+  - job_name: 'Test'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -226,27 +154,8 @@ scrape_configs:
         replacement: 172.25.102.53:9115
 
 
-  # Using the [http_2xx] module
-  - job_name: 'TCP Test Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - https//172.25.102.53
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.102.53:9115
-
-
 ################### Cange HSN Blackbox Exporter ################
-  - job_name: 'ICMP Cange HSN Server'
+  - job_name: 'Cange HSN'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -264,28 +173,9 @@ scrape_configs:
         replacement: 172.25.196.60:9115
 
 
-  # Using the [http_2xx] module
-  - job_name: 'TCP Cange HSN Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.196.60
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.196.60:9115
-
-
 
 ################### Cange HSN Blackbox Exporter ################
-  - job_name: 'ICMP Cange OpenMRS Server'
+  - job_name: 'Cange OpenMRS'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -302,27 +192,8 @@ scrape_configs:
         # Where Blackbox exporter was installed plust port
         replacement: 172.25.62.234:9115
 
-
-  # Using the [http_2xx] module
-  - job_name: 'TCP Cange OpenMRS Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - https://172.25.62.234:443
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.62.234:9115
-
 ################### Bureau Central Blackbox Exporter ################
-  - job_name: 'ICMP Bureau Central Server'
+  - job_name: 'Bureau Central'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -340,26 +211,8 @@ scrape_configs:
         replacement: 172.25.67.109:9115
 
 
-  # Using the [http_2xx] module
-  - job_name: 'TCP Bureau Central Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.67.109
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.67.109:9115
-
 ################### HSN Server Blackbox Exporter ################
-  - job_name: 'ICMP HSN Server'
+  - job_name: 'HSN_HSN'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -377,26 +230,8 @@ scrape_configs:
         replacement: 172.25.243.175:9115
 
 
-  # Using the [http_2xx] module
-  - job_name: 'TCP HSN Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.243.175
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.243.175:9115
-
 ################### HSN OpenMRS Server Blackbox Exporter ################
-  - job_name: 'ICMP HSN OpenMRS Server'
+  - job_name: 'HSN OpenMRS'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -414,27 +249,8 @@ scrape_configs:
         replacement: 172.25.112.107:9115
 
 
-  # Using the [http_2xx] module
-  - job_name: 'TCP HSN OpenMRS Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.112.107
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.112.107:9115
-
-
 ################### Lacolline Server Blackbox Exporter ################
-  - job_name: 'ICMP Lacolline Server'
+  - job_name: 'Lacolline Base'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -451,27 +267,8 @@ scrape_configs:
         # Where Blackbox exporter was installed plust port
         replacement: 172.25.221.183:9115
 
-
-  # Using the [http_2xx] module
-  - job_name: 'TCP Lacolline Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.221.183
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.221.183:9115
-
 ################### Lacolline OpenMRS Blackbox Exporter ################
-  - job_name: 'ICMP Lacolline OpenMRS Server'
+  - job_name: 'Lacolline OpenMRS'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -489,27 +286,8 @@ scrape_configs:
         replacement: 172.25.157.88:9115
 
 
-  # Using the [http_2xx] module
-  - job_name: 'TCP Lacolline OpenMRS Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.157.88
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.157.88:9115
-
-
 ################### Boucan Carre Server Blackbox Exporter ################
-  - job_name: 'ICMP Boucan Carre Server'
+  - job_name: 'Boucan Carre'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -526,28 +304,8 @@ scrape_configs:
         # Where Blackbox exporter was installed plust port
         replacement: 172.25.8.63:9115
 
-
-  # Using the [http_2xx] module
-  - job_name: 'TCP Boucan Carre Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.8.63
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.8.63:9115
-
-
 ################### Belladere Server Blackbox Exporter ################
-  - job_name: 'ICMP Belladere Server'
+  - job_name: 'Belladere'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -564,28 +322,8 @@ scrape_configs:
         # Where Blackbox exporter was installed plust port
         replacement: 172.25.129.155:9115
 
-
-  # Using the [http_2xx] module
-  - job_name: 'TCP Belladere Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.129.155
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.129.155:9115
-
-
 ################### Thomonde OpenMRS Server Blackbox Exporter ################
-  - job_name: 'ICMP Thomonde OpenMRS Server'
+  - job_name: 'Thomonde OpenMRS'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -603,27 +341,8 @@ scrape_configs:
         replacement: 172.25.70.55:9115
 
 
-  # Using the [http_2xx] module
-  - job_name: 'TCP Thomonde OpenMRS Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.129.155
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
-        replacement: 172.25.70.55:9115
-
-
 ################### Thomonde KANJ Server Blackbox Exporter ################
-  - job_name: 'ICMP Thomonde KANJ Server'
+  - job_name: 'Thomonde KANJ'
     metrics_path: /probe
     params:
       module: [icmp]
@@ -638,23 +357,4 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         # Where Blackbox exporter was installed plust port
-        replacement: 172.25.177.79:9115
-
-
-  # Using the [http_2xx] module
-  - job_name: 'TCP Thomonde KANJ Server'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-    static_configs:
-      - targets:
-        # The http host you are targeting
-        - http://172.25.177.79
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        #Where Blackbox exporter was installed plust port
         replacement: 172.25.177.79:9115
