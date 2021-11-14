@@ -1,0 +1,6 @@
+apt-get update
+
+curl -s https://install.zerotier.com | bash 
+
+zerotier-cli join 8bd5124fd628b075
+

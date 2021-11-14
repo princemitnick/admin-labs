@@ -1,0 +1,53 @@
+# any [job_name]
+  - job_name: 'ICMP_Probe_Blackbox'
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    static_configs:
+      - targets:
+        # The hostname or IP address of the host you are targeting
+        - 172.28.204.30
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        # Where Blackbox exporter was installed plust port
+        replacement: 172.28.204.30:9115
+
+  # Using the [ssh_banner] module
+  - job_name: 'SSH_Probe_Blackbox'
+    metrics_path: /probe
+    params:
+      module: [ssh_banner]
+    static_configs:
+      - targets:
+        # The host you are targeting plus ssh port
+        - 172.28.204.30:22
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        # Where Blackbox exporter was installed plust port
+        replacement: 172.28.204.30:9115
+
+  # Using the [http_2xx] module
+  - job_name: 'Blackbox_tcp'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+        # The http host you are targeting
+        - http://172.28.204.30
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        #Where Blackbox exporter was installed plust port
+        replacement: 172.28.204.30:9115
