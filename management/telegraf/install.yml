@@ -1,0 +1,27 @@
+- hosts: test 
+  become: yes
+  tasks:
+    - action: ping 
+    - name: Install telegraf
+      script: 
+        cmd: ./install-telegraf.sh
+    
+    - name: backup telegraf.conf file 
+      copy: 
+        remote_src: yes 
+        src: /etc/telegraf/telegraf.conf 
+        dest: /etc/telegraf/telegraf.conf.bak 
+
+    - name: Copy telegraf.conf to /etc/telegraf
+      copy: 
+        src: ./telegraf.conf 
+        dest: /etc/telegraf
+    
+    - name: Enable telegraf service 
+      systemd:
+        name: telegraf
+        state: restarted
+        enabled: yes 
+
+    
+    
