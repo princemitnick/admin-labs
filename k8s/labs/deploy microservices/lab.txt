@@ -1,0 +1,8 @@
+git clone https://github.com/linuxacademy/robot-shop.git
+
+
+kubectl create namespace robot-shop 
+
+kubectl create -n robo-shop -f ./robo-shop/K8s/descriptors/
+
+kubectl edit deployment mongodb -n robo-shop

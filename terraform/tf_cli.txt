@@ -1,0 +1,36 @@
+terraform -install-autocomplete
+
+terraform version
+
+### Switch the working directory
+terraform -chdir=/path subcommand
+
+### Initialize the directory
+terraform init 
+
+### Create an execution plan 
+terraform plan 
+
+### Apply changes 
+terraform apply 
+
+### Destroy the managed infrastructure 
+terraform destroy 
+
+### Output a deployment plan 
+terraform plan -out <plan_name>
+
+### Output a destroy plan 
+terraform plan -destroy 
+
+### Apply a specific plan 
+terraform apply <plan_name> 
+
+### Only apply changes to a targeted resource 
+terraform apply -target=<resource_name> 
+
+### Pass a variable via the command line 
+terraform apply -var my_variable=<variable>
+
+### Get provider info used in configuration 
+terraform providers

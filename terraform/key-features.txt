@@ -1,0 +1,18 @@
+Infrastructure as Code : 
+Your Infrastructure is described using a high-level configuration syntax.
+This allows your infrastructure to be versioned and treated asyou would any other code. 
+It can also be shared and re-used.
+
+Execution Plans : 
+Terraform generates an execution plan with its "planning" step.
+This show what Terraform will do when you 
+apply the configuration. THis allows you to avoid any 
+surprises when Terraform manipulates infrastructure.
+
+Resource Graph : 
+Terraform builds infrastructure as efficiently as possible,
+and operators get insight into dependencies in their infrastructure.
+It accomplishes this by building a graph of all your resources,
+and it gives you greater insight into the creation and modification
+of any non-dependent resources.
+

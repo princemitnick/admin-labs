@@ -1,0 +1,18 @@
+sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.22.3
+
+mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+
+kubeadm join 10.60.120.191:6443 --token 4kn3eq.nwlejlkzzx5b1k7q \
+	--discovery-token-ca-cert-hash sha256:610dc237ee009c680f8f958b241f311f96875181b4a92c7db0f4447fbda55cf4
+
+
+
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+
+
+kubeadm token create --print-join-command
+
+kubectl get nodes
