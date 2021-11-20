@@ -4,8 +4,8 @@
   - action: ping 
   
   - name: Docker pre-installation
-    shell:
-      cmd: ./docker_env.sh
+    script: 
+      cmd: ./docker_preinstall.sh
   
   - name: Install docker-ce 20.10
     apt:
@@ -23,7 +23,7 @@
       state: present
 
   - name : Docker post-installation
-    shell:
+    script: 
       cmd: ./docker_postinstall.sh
   
   - name: Reload system daemon
@@ -37,8 +37,8 @@
       enabled: yes
   
   - name: K8s Pre installation
-    shell:
-      cmd: ./k8s_preinstall.sh 
+    script: 
+      cmd: ./k8s_preinstall.sh  
   
   - name: Install kubelet kubeadm kubectl 
     apt: 
