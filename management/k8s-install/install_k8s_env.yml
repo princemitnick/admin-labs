@@ -1,0 +1,54 @@
+- hosts: controller
+  become: yes 
+  tasks:
+  - action: ping 
+  
+  - name: Docker pre-installation
+    shell:
+      cmd: ./docker_env.sh
+  
+  - name: Install docker-ce 20.10
+    apt:
+      name: docker-ce
+      state: present
+  
+  - name: Install docker-ce-cli 
+    apt:
+      name: docker-ce-cli
+      state: present 
+  
+  - name: Install containerd.io 
+    apt:
+      name: containerd.io
+      state: present
+
+  - name : Docker post-installation
+    shell:
+      cmd: ./docker_postinstall.sh
+  
+  - name: Reload system daemon
+    systemd:
+      daemon_reload: yes
+  
+  - name: Start docker service
+    systemd:
+      name: docker 
+      state: started
+      enabled: yes
+  
+  - name: K8s Pre installation
+    shell:
+      cmd: ./k8s_preinstall.sh 
+  
+  - name: Install kubelet kubeadm kubectl 
+    apt: 
+      name:
+        - kubelet 
+        - kubeadm
+        - kubectl
+  
+  - name: Start and enable kubelet
+    systemd: 
+      name: kubelet
+      state: started 
+      enabled: yes

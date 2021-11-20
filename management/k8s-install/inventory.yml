@@ -1,0 +1,10 @@
+all:
+  hosts:
+    controller:
+      ansible_host: 172.25.174.174
+    worker1:
+      ansible_host: 172.25.81.234
+    worker2:
+      ansible_host: 172.25.155.97
+    worker3:
+      ansible_host: 172.25.188.31
