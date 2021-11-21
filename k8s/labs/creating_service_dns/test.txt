@@ -1,0 +1,59 @@
+Create an nginx deployment using the latest nginx image.
+Verify the deployment has been created successfully.
+Create a service from the nginx deployment created in the previous objective.
+Verify the service has been created successfully.
+Create a pod that will allow you to perform the DNS query.
+Verify that the pod has been created successfully.
+Perform the DNS query to the service created in an earlier objective.
+Record the DNS name of the service.
+
+Create nginx-deployment
+
+"""
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx-app 
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx_v2  
+  template:
+    metadata:
+      labels:
+        app: nginx_v2
+    spec:
+      containers:
+      - name: nginx 
+        image: nginx
+        ports: 
+        - containerPort: 80
+
+"""
+
+
+kubectl expose deployment nginx-deployment --port 80 --type NodePort 
+
+
+create busybox pod 
+
+"""
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+spec:
+  containers:
+  - image: busybox:1.28.4
+    command:
+      - sleep
+      - "3600"
+    name: busybox
+  restartPolicy: Always
+"""
+
+kubectl exec busybox -- nslookup nginx-deployment 
+
