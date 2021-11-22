@@ -55,5 +55,4 @@ spec:
   restartPolicy: Always
 """
 
-kubectl exec busybox -- nslookup nginx-deployment 
-
+kubectl exec busybox -- nslookup nginx-deployment
