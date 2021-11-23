@@ -6,8 +6,7 @@ mkdir -p $HOME/.kube
 
 
 
-kubeadm join 10.60.120.194:6443 --token vdfwj7.13iell8odb1bgwhu \
-	--discovery-token-ca-cert-hash sha256:9983c76d35764e3e1a2f43ad17c688a7b5169c39dc5f127ea371390eda535d31
+sudo kubeadm join 10.60.120.194:6443 --token vdfwj7.13iell8odb1bgwhu --discovery-token-ca-cert-hash sha256:9983c76d35764e3e1a2f43ad17c688a7b5169c39dc5f127ea371390eda535d31
 
 
 
