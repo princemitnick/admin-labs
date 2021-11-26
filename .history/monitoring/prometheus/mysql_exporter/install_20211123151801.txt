@@ -1,0 +1,2 @@
+sudo useradd -M -r -s /bin/false mysql_exporter
+

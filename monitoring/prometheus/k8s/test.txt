@@ -1,0 +1,15 @@
+git clone https://github.com/kubernetes/kube-state-metrics.git 
+
+cd kube-state-metrics/
+git checkout v2.2.4
+
+kubectl apply -f kubernetes
+
+
+Create Service 
+
+Ref - service.yaml
+
+"""
+
+"""

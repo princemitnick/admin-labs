@@ -1,0 +1,15 @@
+docker run -d --restart always --name cadvisor -p 8080:8880 -v "/:/rootfs:ro" -v "/var/run:/var/run:rw" -v "/sys:/sys:ro" -v "/var/lib/docker/:/var/lib/docker:ro" google/cadvisor:latest
+
+
+create docker-compose 
+
+Ref - docker-compose
+"""
+"""
+
+Prometheus config 
+scrape_configs:
+- job_name: cadvisor
+  scrape_interval: 5s
+  static_configs:
+  - targets: ['172.25.174.174:9323']

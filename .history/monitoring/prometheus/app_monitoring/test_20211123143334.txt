@@ -1,0 +1,35 @@
+sudo apt-get update
+
+sudo apt-get install apache2
+
+sudo useradd -M -r -s /bin/false apache_exporter
+
+wget https://github.com/Lusitaniae/apache_exporter/releases/download/v0.10.1/apache_exporter-0.10.1.linux-amd64.tar.gz
+
+tar zxvf apach* 
+
+sudo cp apach*../apache_exporter /usr/local/bin/ 
+
+sudo chown apache_exporter:apache_exporter /usr/local/bin/apache_exporter
+
+sudo nano /etc/systemd/system/apache_exporter.service 
+
+"""
+[Unit]
+Description=Prometheus Apache Exporter 
+Wants=network-online.target
+After=network-online.target 
+
+[Service]
+User=apache_exporter
+Group=apache_exporter
+Type=simple
+ExecStart=/usr/local/bin/apache_exporter
+
+[Install]
+WantedBy=multi-user.target
+"""
+
+sudo systemctl daemon-reload 
+
+sudo systemctl start apache_exporter

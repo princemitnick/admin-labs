@@ -1,0 +1,16 @@
+sudo vim /etc/docker/daemon.json 
+
+"""
+{
+    "experimental": true, 
+    "metrics-addr": "172.25.174.174:9323"
+}
+"""
+
+sudo vim /etc/prometheus/prometheus.yml
+
+"""
+- job_name: 'Docker Controller'
+  static_configs:
+  - targets: ['172.25.174.174:9323']
+"""
