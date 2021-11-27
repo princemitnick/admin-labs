@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Start."
-
 db_query="mysql -uroot -pmysql --host 127.1 --port 3320 -s -N exchange"
 
 #...
@@ -38,9 +36,6 @@ verrettes=`$db_query -e "select count(*) from emrid where url = 'Verrettes/' OR 
 echo "Getting SSPE data"
 sspe=`$db_query -e "select count(*) from emrid where url = 'SSPE/' OR url = 'sspe/fp_images_with_emr_id/';"` 
 
-finger_total=`expr $boucan_carre + $belladere + $cange + $cerca + $hum + $hinche + $pra \
-+ $lacollines + $thomonde + $verrettes + $sspe`
-
 echo """
 Belladere : $belladere
 Cange : $cange
@@ -53,50 +48,13 @@ Lacollines : $lacollines
 Thomonde : $thomonde
 Verrettes : $verrettes
 SSPE : $sspe
-
-***************************
-Total : $finger_total
 """
-#HUM Queries
-
-db_hum_query="mysql -uroot -pmysql --host 127.1 --port 3320 hum -s -N"
-
-#...
-echo "Getting count HUM Male Gender"
-hum_male_gender=`$db_hum_query -e "select count(gender) from person where gender = 'm' and hivemr is not null;"`
-#...
-echo "Getting count HUM Female Gender"
-hum_female_gender=`$db_hum_query -e "select count(gender) from person where gender = 'f' and hivemr is not null;"`
-
 
 cat << EOF | curl --data-binary @- http://172.25.75.198:9091/metrics/job/fingerprinting/instance/172.25.75.198
   # TYPE finger_bcarre_total gauge
-  finger_bcarre_total $boucan_carre
-  # TYPE finger_belladere_total gauge
-  finger_belladere_total $belladere
-  # TYPE finger_cange_total gauge
-  finger_cange_total $cange
-  # TYPE finger_cerca_total gauge
-  finger_cerca_total $cerca
-  # TYPE finger_hum_total gauge
-  finger_hum_total $hum
-  # TYPE finger_hinche_total gauge
-  finger_hinche_total $hinche
-  # TYPE finger_pra_total gauge
-  finger_pra_total $pra
-  # TYPE finger_lacollines_total gauge
-  finger_lacollines_total $lacollines
-  # TYPE finger_thomonde_total gauge
-  finger_thomonde_total $thomonde
-  # TYPE finger_verrettes_total gauge
-  finger_verrettes_total $verrettes
-  # TYPE finger_sspe_total gauge
-  finger_sspe_total $sspe
-  # TYPE finger_total gauge
-  finger_total $finger_total
-  # TYPE finger_hum_male_gender gauge
-  finger_hum_male_gender $hum_male_gender
-  #TYPE finger_hum_female_gender gauge
-  finger_hum_female_gender $hum_female_gender
+  finger_bcarre_total 1
+  # TYPE job_num_files_deleted gauge
+  job_num_files_deleted $num_files
+  #TYPE Author gauge
+  job_num_files_deleted_author 22
 EOF
-

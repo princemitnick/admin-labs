@@ -96,7 +96,7 @@ cat << EOF | curl --data-binary @- http://172.25.75.198:9091/metrics/job/fingerp
   finger_total $finger_total
   # TYPE finger_hum_male_gender gauge
   finger_hum_male_gender $hum_male_gender
-  #TYPE finger_hum_female_gender gauge
+  #TYPE finger_hum_female_gender gauche
   finger_hum_female_gender $hum_female_gender
 EOF
 

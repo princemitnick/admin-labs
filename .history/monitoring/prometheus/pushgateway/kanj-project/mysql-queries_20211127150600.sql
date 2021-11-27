@@ -80,11 +80,4 @@ select count(*) from emrid where url = 'Verrettes/' OR url = 'verrettes/fp_image
 
 Queries on HUM database
 
-*
-*
-*
-*
 */
-
-select count(gender) from person where gender = 'f' and hivemr is not null;
-select count(gender) from person where gender = 'm' and hivemr is not null;

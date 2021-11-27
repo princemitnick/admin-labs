@@ -84,7 +84,5 @@ Queries on HUM database
 *
 *
 *
-*/
 
-select count(gender) from person where gender = 'f' and hivemr is not null;
-select count(gender) from person where gender = 'm' and hivemr is not null;
+*/

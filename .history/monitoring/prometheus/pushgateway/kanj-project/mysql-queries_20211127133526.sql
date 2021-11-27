@@ -62,29 +62,17 @@ select count(*) from emrid where url = 'PRA/' OR url = 'pra/fp_images_with_emr_i
 /* SSPE */
 
 select count(*) from emrid where url = 'SSPE/';
-select count(*) from emrid where url = 'sspe/fp_images_with_emr_id/ ';
-select count(*) from emrid where url = 'SSPE/' OR url = 'sspe/fp_images_with_emr_id/'; 
+select * from emrid where url = 'sspe/fp_images_with_emr_id/ ';
+select * from emrid where url = 'SSPE/' OR url = 'sspe/fp_images_with_emr_id/'; 
 
 /* Thomonde */
 
-select count(*) from emrid where url = 'Thomonde/';
+select * from emrid where url = 'Thomonde/';
 
 /* Verretes */ 
 
-select count(*) from emrid where url = 'Verrettes/';
-select count(*) from emrid where url = 'verrettes/fp_images_with_emr_id/';
-select count(*) from emrid where url = 'Verrettes/' OR url = 'verrettes/fp_images_with_emr_id/'; 
+select * from emrid where url = 'Verrettes/';
+select * from emrid where url = 'verrettes/fp_images_with_emr_id/';
+select * from emrid where url = 'Verrettes/' OR url = 'verrettes/fp_images_with_emr_id/'; 
 
 
-/*
-
-Queries on HUM database
-
-*
-*
-*
-*
-*/
-
-select count(gender) from person where gender = 'f' and hivemr is not null;
-select count(gender) from person where gender = 'm' and hivemr is not null;

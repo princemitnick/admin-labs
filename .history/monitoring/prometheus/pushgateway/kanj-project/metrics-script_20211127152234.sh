@@ -57,16 +57,6 @@ SSPE : $sspe
 ***************************
 Total : $finger_total
 """
-#HUM Queries
-
-db_hum_query="mysql -uroot -pmysql --host 127.1 --port 3320 hum -s -N"
-
-#...
-echo "Getting count HUM Male Gender"
-hum_male_gender=`$db_hum_query -e "select count(gender) from person where gender = 'm' and hivemr is not null;"`
-#...
-echo "Getting count HUM Female Gender"
-hum_female_gender=`$db_hum_query -e "select count(gender) from person where gender = 'f' and hivemr is not null;"`
 
 
 cat << EOF | curl --data-binary @- http://172.25.75.198:9091/metrics/job/fingerprinting/instance/172.25.75.198
@@ -94,9 +84,23 @@ cat << EOF | curl --data-binary @- http://172.25.75.198:9091/metrics/job/fingerp
   finger_sspe_total $sspe
   # TYPE finger_total gauge
   finger_total $finger_total
+EOF
+
+
+db_hum_query=`mysql -uroot -pmysql --host 127.1 --port 3320 hum -s -N`
+#...
+echo "Getting count HUM Male Gender"
+hum_male_gender=`$db_hum_query -e "select count(gender) from person where gender = 'm' and hivemr is not null;"`
+#...
+echo "Getting count HUM Female Gender"
+hum_female_gender=`$db_hum_query -e "select count(gender) from person where gender = 'f' and hivemr is not null;"`
+
+
+cat << EOF | curl --data-binary @- http://172.25.75.198:9091/metrics/job/fingerprinting/instance/172.25.75.198
   # TYPE finger_hum_male_gender gauge
-  finger_hum_male_gender $hum_male_gender
-  #TYPE finger_hum_female_gender gauge
+  finger_hum_mal_gender $hum_male_gender
+  #TYPE finger_hum_female_gender gauche
   finger_hum_female_gender $hum_female_gender
 EOF
 
+echo #Done.""

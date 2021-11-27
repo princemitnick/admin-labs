@@ -59,7 +59,7 @@ Total : $finger_total
 """
 #HUM Queries
 
-db_hum_query="mysql -uroot -pmysql --host 127.1 --port 3320 hum -s -N"
+db_hum_query=`mysql -uroot -pmysql --host 127.1 --port 3320 hum -s -N`
 
 #...
 echo "Getting count HUM Male Gender"
@@ -96,7 +96,7 @@ cat << EOF | curl --data-binary @- http://172.25.75.198:9091/metrics/job/fingerp
   finger_total $finger_total
   # TYPE finger_hum_male_gender gauge
   finger_hum_male_gender $hum_male_gender
-  #TYPE finger_hum_female_gender gauge
+  #TYPE finger_hum_female_gender gauche
   finger_hum_female_gender $hum_female_gender
 EOF
 
