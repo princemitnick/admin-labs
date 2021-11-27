@@ -1,0 +1,4 @@
+
+sudo useradd -M -r -s /bin/false pushgateway
+
+wget  https://github.com/prometheus/pushgateway/releases/download/v1.4.2/pushgateway-1.4.2.linux-amd64.tar.gz

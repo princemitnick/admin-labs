@@ -25,7 +25,4 @@ Edit prometheus.yml file
 - job_name: 'Pushgateway'
   honor_labels: true
   static_configs:
-  - targets: ['172.25.75.198:9091']
-
-
-echo "value_of_pi 3.14" | curl --data-binary @- http://localhost:9091/metrics/job/my_job
+  - targets: ['localhost:9091']
