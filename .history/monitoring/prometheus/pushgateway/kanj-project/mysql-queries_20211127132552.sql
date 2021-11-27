@@ -74,4 +74,3 @@ select * from emrid where url = "Thomonde/";
 select * from emrid where url = "Verrettes/";
 select * from emrid where url = "verrettes/fp_images_with_emr_id/";
 select * from emrid where url = "Verrettes/" OR url = "verrettes/fp_images_with_emr_id/"; 
-

@@ -63,15 +63,4 @@ select * from emrid where url = "PRA/" OR url = "pra/fp_images_with_emr_id/ ";
 
 select * from emrid where url = "SSPE/";
 select * from emrid where url = "sspe/fp_images_with_emr_id/ ";
-select * from emrid where url = "SSPE/" OR url = "sspe/fp_images_with_emr_id/"; 
-
-/* Thomonde */
-
-select * from emrid where url = "Thomonde/";
-
-/* Verretes */ 
-
-select * from emrid where url = "Verrettes/";
-select * from emrid where url = "verrettes/fp_images_with_emr_id/";
-select * from emrid where url = "Verrettes/" OR url = "verrettes/fp_images_with_emr_id/"; 
-
+select * from emrid where url = "SSPE/" OR url = "pra/fp_images_with_emr_id/ "; 
