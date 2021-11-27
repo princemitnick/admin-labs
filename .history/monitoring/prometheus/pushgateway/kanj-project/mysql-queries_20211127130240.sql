@@ -35,27 +35,4 @@ select * from emrid where url = 'cange/fp_images_with_emr_id/' OR url = 'Cange/'
 select * from emrid where url = 'Belladeres/';
 
 /* Boucan Carre */
-select * from emrid where url = "Boucan Carre/";
-select * from emrid where url = 'boucan/fp_images_with_emr_id/';
-select * from emrid where url = 'Boucan-carre/';
-select * from emrid where url = 'Boucan-carre/' OR url = "Boucan Carre/" OR url = "boucan/fp_images_with_emr_id/" ;
-
-/* Cerca la Source */
-select * from emrid where url = "Cerca la Source/";
-
-/* Hinche */
-select * from emrid where url = "Hinche/";
-
-
-/* HUM */
-select * from emrid where url = "HUM/";
-
-/* Lacollines */
-select * from emrid where url = "Lacollines/";
-
-/* PRA */
-
-select * from emrid where url = "PRA/";
-select * from emrid where url = "pra/fp_images_with_emr_id/ ";
-select * from emrid where url = "PRA/" OR url = "pra/fp_images_with_emr_id/ "; 
 

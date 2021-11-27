@@ -56,6 +56,3 @@ select * from emrid where url = "Lacollines/";
 /* PRA */
 
 select * from emrid where url = "PRA/";
-select * from emrid where url = "pra/fp_images_with_emr_id/ ";
-select * from emrid where url = "PRA/" OR url = "pra/fp_images_with_emr_id/ "; 
-
