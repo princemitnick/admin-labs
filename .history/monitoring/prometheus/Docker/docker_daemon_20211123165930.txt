@@ -1,0 +1,8 @@
+sudo vim /etc/docker/daemon.json 
+
+"""
+{
+    "experimental": true, 
+    "metrics-addr": "172.25.174.174:9323"
+}
+"""

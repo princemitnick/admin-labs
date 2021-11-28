@@ -1,0 +1,61 @@
+### Create Persistent Volume
+
+"""
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+"""
+
+kubectl apply -f redis-pv.yaml 
+
+### Create PersistentVolume Claim 
+
+"""
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redisdb-pvc
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+"""
+
+kubectl apply -f redis-pvc.yaml 
+
+### Create pod with mounted volume 
+"""
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redispod
+spec:
+  containers:
+  - image: redis
+    name: redisdb
+    volumeMounts:
+    - name: redis-data
+      mountPath: /data
+    ports:
+    - containerPort: 6379
+      protocol: TCP
+  volumes:
+  - name: redis-data
+    persistentVolumeClaim:
+      claimName: redisdb-pvc
+"""
+
+kubectl apply -f redispod.yaml 

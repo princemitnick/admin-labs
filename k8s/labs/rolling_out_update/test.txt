@@ -1,0 +1,33 @@
+"""
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeserve
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubeserve
+  template:
+    metadata:
+      name: kubeserve
+      labels:
+        app: kubeserve
+    spec:
+      containers:
+      - image: linuxacademycontent/kubeserve:v1
+        name: app
+"""
+kubectl apply -f kubeserver.yaml 
+
+
+kubectl rollout status deployments kubeserve
+
+kubectl scale deployment kubeserve --replicas=5
+
+kubectl expose deployment kubeserve --port 80 --target-port 80 --type NodePort
+
+kubectl set image deployment/kubeserve app=linuxacademycontent/kubeserve:v2 --v 6
+
+
+kubectl rollout history deployment

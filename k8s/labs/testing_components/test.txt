@@ -1,0 +1,10 @@
+kubectl create deployment nginx --image=nginx 
+
+kubectl port-forward pod_name 8081:80 
+
+kubectl exec -it podname -- nginx -v 
+
+kubectl expose deployment nginx --port 80 --type NodePort 
+
+kubectl expose deployment nginx --port 80 --type NodePort --target-port=8081
+kubectl get services 

@@ -1,0 +1,23 @@
+
+sudo useradd -M -r -s /bin/false pushgateway
+
+wget  https://github.com/prometheus/pushgateway/releases/download/v1.4.2/pushgateway-1.4.2.linux-amd64.tar.gz
+
+tar xvfz pushgateway**.tar.gz 
+
+sudo cp pushgateway***/pushgateway /usr/local/bin/ 
+
+sudo chown pushgateway:pushgateway /usr/local/bin/pushgateway
+
+sudo vim /etc/systemd/system/pushgateway.service
+
+"""
+Ref : ./pushgateway.service
+"""
+
+sudo systemctl daemon-reload 
+
+sudo systemctl start pushgateway.service 
+sudo systemctl enable pushgateway.service
+
+Edit prometheus.yml file 

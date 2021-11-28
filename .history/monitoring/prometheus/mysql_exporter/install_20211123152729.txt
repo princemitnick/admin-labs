@@ -1,0 +1,16 @@
+sudo useradd -M -r -s /bin/false mysql_exporter
+
+wget https://github.com/prometheus/mysqld_exporter/releases/download/v0.13.0/mysqld_exporter-0.13.0.linux-amd64.tar.gz
+
+sudo cp mysql_e**/mysqld_exporter /usr/local/bin/
+
+sudo chown mysql_exporter:mysql_exporter /usr/local/bin/mysqld_exporter
+
+mysql -uroot -p
+
+
+CREATE USER 'mysqld_exporter'@'localhost' IDENTIFIED BY 'mysql';
+
+GRANT PROCESS, REPLICATION CLIENT, SELECT ON *.* TO 'mysqld_exporter'@'localhost';
+
+FLUSH PRIVILEGES;

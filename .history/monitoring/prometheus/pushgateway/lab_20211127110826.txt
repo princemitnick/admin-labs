@@ -1,0 +1,23 @@
+sudo vi /etc/jobs/cleanup.sh
+
+"""
+num_files=$(rm -vrif /etc/debug_data/* | wc -l)
+
+cat << EOF | curl --data-binary @- http://172.25.75.198:9091/metrics/job/debug_cleanup/instance/172.25.75.198
+  # TYPE job_executed_successful gauge
+  job_executed_successful 1
+EOF
+"""
+
+"""
+num_files=$(rm -vrif /etc/debug_data/* | wc -l)
+
+cat << EOF | curl --data-binary @- http://prometheus:9091/metrics/job/debug_cleanup/instance/10.0.1.102
+  # TYPE job_executed_successful gauge
+  job_executed_successful 1
+  # TYPE job_num_files_deleted gauge
+  job_num_files_deleted $num_files
+  #TYPE Author
+  job_num_files_deleted_author prince
+EOF
+"""

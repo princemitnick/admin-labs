@@ -1,0 +1,6 @@
+https://community.ui.com/questions/Use-already-existing-SSL-for-unifi-controller/f4472600-7d69-461b-9cc3-46cde7f1ce15
+
+
+openssl pkcs12 -export -in www_uictl_zanmilasante_org_e1998_4ad5b_1638275196_2f65d78ece2b0651b670cfe7950ea940.crt -inkey e1998_4ad5b_2e629b43c1b5e28e190e07b640b33179.key -out keystore.p12  -name unifi
+keytool -importkeystore -deststorepass aircontrolenterprise -destkeypass aircontrolenterprise -destkeystore /usr/lib/unifi/data/keystore -srckeystore keystore.p12 -srcstoretype PKCS12 -alias unifi
+
