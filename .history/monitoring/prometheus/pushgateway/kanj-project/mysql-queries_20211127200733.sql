@@ -93,8 +93,3 @@ select count(gender) from person where gender = 'm' and hivemr is not null;
 select date_of_birth from person limit 2;
 
 select timestampdiff(YEAR,date_of_birth,curdate()) as age from person where timestampdiff(YEAR,date_of_birth, curdate()) < 18 and gender = 'f' limit 10;
-
-21
-19
-201
-436
