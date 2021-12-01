@@ -1,0 +1,49 @@
+Debug: /Stage[main]/Apache2/Exec[download and run install letsencrypt]: '/var/acme/install-letsencrypt.sh' won't be executed because of failed check 'unless'
+Debug: Prefetching crontab resources for cron
+Debug: looking for crontabs in /var/spool/cron/crontabs
+Debug: Executing: 'crontab -l'
+Info: Computing checksum on file /etc/apache2/sites-available/default-ssl.conf
+Debug: Evicting cache entry for environment 'production'
+Debug: Deleted text domain :production: false
+Debug: Caching environment 'production' (ttl = 0 sec)
+Info: /Stage[main]/Apache2/File[/etc/apache2/sites-available/default-ssl.conf]: Filebucketed /etc/apache2/sites-available/default-ssl.conf to puppet with sum efd22e2be76676b15c1a0a477f10103a
+Notice: /Stage[main]/Apache2/File[/etc/apache2/sites-available/default-ssl.conf]/content: content changed '{md5}efd22e2be76676b15c1a0a477f10103a' to '{md5}9865fab37dae4f56628156909d82688b'
+Info: /Stage[main]/Apache2/File[/etc/apache2/sites-available/default-ssl.conf]: Scheduling refresh of Service[apache2]
+Debug: /Stage[main]/Apache2/File[/etc/apache2/sites-available/default-ssl.conf]: The container Class[Apache2] will propagate my refresh event
+Debug: Executing: '/bin/systemctl is-active -- apache2'
+Debug: Executing: '/bin/systemctl is-enabled -- apache2'
+Debug: Executing: '/bin/systemctl unmask -- apache2'
+Debug: Executing: '/bin/systemctl start -- apache2'
+Debug: Running journalctl command to get logs for systemd start failure: journalctl -n 50 --since '5 minutes ago' -u apache2 --no-pager
+Debug: Executing: 'journalctl -n 50 --since '5 minutes ago' -u apache2 --no-pager'
+Error: Systemd start for apache2 failed!
+journalctl log for apache2:
+-- Logs begin at Mon 2021-11-29 22:22:48 EST, end at Tue 2021-11-30 15:40:23 EST. --
+Nov 30 15:40:22 cercalasource.pih-emr.org systemd[1]: Starting The Apache HTTP Server...
+Nov 30 15:40:22 cercalasource.pih-emr.org apachectl[42991]: AH00526: Syntax error on line 35 of /etc/apache2/sites-enabled/default-ssl.conf:
+Nov 30 15:40:22 cercalasource.pih-emr.org apachectl[42991]: SSLCertificateFile: file '/etc/ssl/certs/8ec70940872b4327.crt' does not exist or is empty
+Nov 30 15:40:23 cercalasource.pih-emr.org apachectl[42988]: Action 'start' failed.
+Nov 30 15:40:23 cercalasource.pih-emr.org apachectl[42988]: The Apache error log may have more information.
+Nov 30 15:40:23 cercalasource.pih-emr.org systemd[1]: apache2.service: Control process exited, code=exited, status=1/FAILURE
+Nov 30 15:40:23 cercalasource.pih-emr.org systemd[1]: apache2.service: Failed with result 'exit-code'.
+Nov 30 15:40:23 cercalasource.pih-emr.org systemd[1]: Failed to start The Apache HTTP Server.
+
+Error: /Stage[main]/Apache2/Service[apache2]/ensure: change from 'stopped' to 'running' failed: Systemd start for apache2 failed!
+journalctl log for apache2:
+-- Logs begin at Mon 2021-11-29 22:22:48 EST, end at Tue 2021-11-30 15:40:23 EST. --
+Nov 30 15:40:22 cercalasource.pih-emr.org systemd[1]: Starting The Apache HTTP Server...
+Nov 30 15:40:22 cercalasource.pih-emr.org apachectl[42991]: AH00526: Syntax error on line 35 of /etc/apache2/sites-enabled/default-ssl.conf:
+Nov 30 15:40:22 cercalasource.pih-emr.org apachectl[42991]: SSLCertificateFile: file '/etc/ssl/certs/8ec70940872b4327.crt' does not exist or is empty
+Nov 30 15:40:23 cercalasource.pih-emr.org apachectl[42988]: Action 'start' failed.
+Nov 30 15:40:23 cercalasource.pih-emr.org apachectl[42988]: The Apache error log may have more information.
+Nov 30 15:40:23 cercalasource.pih-emr.org systemd[1]: apache2.service: Control process exited, code=exited, status=1/FAILURE
+Nov 30 15:40:23 cercalasource.pih-emr.org systemd[1]: apache2.service: Failed with result 'exit-code'.
+Nov 30 15:40:23 cercalasource.pih-emr.org systemd[1]: Failed to start The Apache HTTP Server.
+
+Debug: Executing: '/bin/systemctl is-active -- apache2'
+Debug: /Stage[main]/Apache2/Service[apache2]: Skipping restart; service is not running
+Notice: /Stage[main]/Apache2/Service[apache2]: Triggered 'refresh' from 1 event
+Debug: /Stage[main]/Apache2/Service[apache2]: The container Class[Apache2] will propagate my refresh event
+Debug: Class[Apache2]: Resource is being skipped, unscheduling all events
+Info: Class[Apache2]: Unscheduling all events on Class[Apache2]
+
