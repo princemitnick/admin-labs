@@ -1,0 +1,29 @@
+useradd -M -r -s /bin/false altermanger
+wget https://github.com/prometheus/alertmanager/releases/download/v0.23.0/alertmanager-0.23.0.linux-amd64.tar.gz
+
+tar zxvf altermanger**.tar.gz 
+
+sudo cp alertmanger***/{altermanger,amtool} /usr/local/bin/
+
+
+sudo chown altermanger:altermanger /usr/local/bin/{alertmanager,amtool}
+
+sudo mkdir -p /etc/altermanger
+
+sudo cp altermanger***/altermanger.yml /etc/altermanger/
+
+sudo chown -R altermanger.altermanger /etc/alertmanager/
+
+mkdir -p /var/lib/altermanger
+
+sudo chown altermanger.altermanger /var/lib/alertmanager
+
+sudo mkdir -p /etc/amtool/
+
+sudo vi /etc/amtool/config.yml 
+
+"""
+altermanger.url: http://localhost:9093
+"""
+
+sudo vim /etc/systemd/system/alertmanager.service
