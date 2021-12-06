@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: postgres 
+  namespace: kanj 
+spec:
+  containers: 
+  - image: zldev/postgres:1.0.0-alpha
+    restart: always 
+    name: postgres 
+    ports: 
+    - name: postgres 
+      containerPort: 5432
+    environment:
+      POSTGRES_DB: keycloak 
+      POSTGRES_USER: root 
+      POSTGRES_PASSWORD: postgres

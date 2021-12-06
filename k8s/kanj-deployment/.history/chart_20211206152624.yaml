@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: chart
+  namespace: kanj
+spec:
+  containers:
+  - image: zldev/config:1.0.0-alpha
+    restart: always
+    name: chart
+    ports
+    - name: chart

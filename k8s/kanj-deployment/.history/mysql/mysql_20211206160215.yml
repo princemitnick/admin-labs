@@ -1,0 +1,38 @@
+apiVersion: v2
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: kanj
+  labels:
+    app: mysql
+spec: 
+  replicas: 2
+  template: 
+    metadata: 
+      labels: 
+        app: mysql-kanj
+    spec:
+      containers: 
+      - name: mysql-kanj 
+        image: zldev/mysql:1.0.0-alpha
+        imagePullPolicy: Always 
+        ports: 
+        - containerPort: 3306
+      environment:
+        MYSQL_USER: root 
+        MYSQL_ROOT_PASSWORD: mysql 
+
+
+
+
+spec:
+  replicas: 2
+  containers: 
+  - image: zldev/mysql:1.0.0-alpha
+    name: mysql
+    ports: 
+    - name: mysql 
+      containerPort: 3306
+    environment:
+      MYSQL_USER: root 
+      MYSQL_ROOT_PASSWORD: mysql 
