@@ -1,0 +1,12 @@
+version: '2'
+services:
+  hsn:
+    container_name: hsn-system
+    image: hsn:v0.1
+    ports:
+    - '8081:8080'
+    volumes:
+    - /opt/tomcat:/usr/local/tomcat/
+    environment:
+      ALLOW_EMPTY_PASSWORD=yes
+

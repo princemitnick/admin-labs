@@ -14,4 +14,3 @@ done
 expr 52 + 23
 
 # Create docker image
-docker build -t hsn:v2 .

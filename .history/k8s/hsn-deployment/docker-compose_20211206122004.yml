@@ -1,0 +1,7 @@
+version: '2'
+services:
+  hsn:
+    container_name: hsn-system
+    image: hsn:v0.1
+    ports:
+    - '8080:8080'

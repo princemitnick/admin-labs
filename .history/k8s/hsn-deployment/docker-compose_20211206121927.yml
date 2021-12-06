@@ -1,0 +1,4 @@
+version: '2'
+services:
+  hsn:
+    container_name: name

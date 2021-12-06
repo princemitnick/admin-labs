@@ -1,0 +1,5 @@
+FROM tomcat:8.5.2
+RUN mkdir -p /home/emr
+COPY .hsn.mail.properties /home/emr
+ADD hsn.war /usr/local/tomcat/webapps/ 
+EXPOSE 8080
