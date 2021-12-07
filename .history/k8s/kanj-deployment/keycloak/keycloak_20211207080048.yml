@@ -44,9 +44,9 @@ spec:
         - name: DB_VENDOR
           value: postgres
         - name: DB_ADDR
-          value: 172.25.174.174
+          value: 10.97.104.167
         - name: DB_PORT
-          value: "30002"
+          value: "5432"
         - name: DB_DATABASE
           value: keycloak
         - name: DB_USER
