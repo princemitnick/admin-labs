@@ -10,7 +10,7 @@ spec:
   - port: 5432
     name: postgres-kanj 
     targetPort: 5432
-    nodePort: 30002
+    nodePort: 5432
   selector:
     app: postgres-kanj 
 

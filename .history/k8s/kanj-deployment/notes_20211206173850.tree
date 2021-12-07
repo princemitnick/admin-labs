@@ -1,0 +1,11 @@
+postgres:
+  port:
+    value: 30002
+
+keycloak:
+  port: 
+    value: 30003
+
+mysql port : 32756 
+
+

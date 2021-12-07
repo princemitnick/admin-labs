@@ -6,7 +6,7 @@ spec:
   storageClassName: "postgres"
   capacity: 
     storage: 20Gi
-  accessModes: 
+  accessMode: 
     - ReadWriteOnce 
   hostPath: 
     path: "/opt/postgres"
