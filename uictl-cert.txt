@@ -1,0 +1,6 @@
+openssl pkcs12 -export -in uictl_zanmilasante_org_db464_07d89_1670025131_b9e9b4e3bcd004fe8fdf7e8cb5da71fa.crt -inkey db464_07d89_fbf4cc9fdabd0d20d4c1c1ea38386d6f.key -out keystore.p12  -name unifi
+
+mv /var/lib/unifi/keystore /var/lib/unifi/keystore.backup
+
+
+keytool -importkeystore -deststorepass aircontrolenterprise -destkeypass aircontrolenterprise -destkeystore /var/lib/unifi/keystore -srckeystore keystore.p12 -srcstoretype PKCS12 -alias unifi
