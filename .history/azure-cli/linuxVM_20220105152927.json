@@ -1,0 +1,22 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2021-01-05/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string",
+            "defaultValue": "vm-demo-04",
+            "metadata": {
+                "description": "VM LINUX DEMO 04"
+            }
+        },
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "Username for the virtual machine"
+            }
+        },
+        "authenticationType": {
+            
+        }
+    }
+}

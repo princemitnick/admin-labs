@@ -20,9 +20,3 @@ New-AzVM  `
 az resource list -o table
 
 code linuxvms.json
-
-az deployment group create `
---resource-group $rg `
---name CLIDEPLOY `
---template-file linuxvms.json 
-
