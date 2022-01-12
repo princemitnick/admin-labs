@@ -1,0 +1,8 @@
+aws configure
+
+add AWS Access Key ID
+
+add AWS Secret Access Key 
+
+aws s3 ls
+
