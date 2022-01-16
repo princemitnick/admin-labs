@@ -1,0 +1,20 @@
+aws configure
+
+add AWS Access Key ID
+
+add AWS Secret Access Key 
+
+aws s3 ls
+
+aws s3 cp test.txt s3://princebucket
+
+#Create role
+
+aws iam create-role --role-name DEV_ROLE --assume-role-policy-document file://trust_policy_ec2.json
+
+#Create Policy 
+aws iam create-policy --policy-name DevS3ReadAccess --policy-document file://dev_s3_read_access.json 
+
+#Attach role 
+
+aws iam attach-role-policy --role-name DEV_ROLE --policy-arn 

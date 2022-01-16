@@ -46,7 +46,7 @@ aws ec2 associate-iam-instance-profile --instance-id i-029145d880f4d166d --iam-i
 aws ec2 describe-instances --instance-ids i-029145d880f4d166d
 
 
-aws sts get-caller-identity
+aws sts get-caller-id
 
 
 

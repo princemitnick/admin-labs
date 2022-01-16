@@ -28,26 +28,6 @@ aws iam list-attached-role-policies --role-name DEV_ROLE
 
 aws iam create-instance-profile --instance-profile-name DEV_PROFILE
 
-#Add role to instance profile 
-
-aws iam add-role-to-instance-profile --instance-profile-name DEV_PROFILE --role-name DEV_ROLE 
-
-#Getting instance profile 
-
-aws iam get-instance-profile --instance-profile-name DEV_PROFILE
-
-
-#Associate instance profile to instance 
-
-aws ec2 associate-iam-instance-profile --instance-id i-029145d880f4d166d --iam-instance-profile Name="DEV_PROFILE"
-
-#Describe instances 
-
-aws ec2 describe-instances --instance-ids i-029145d880f4d166d
-
-
-aws sts get-caller-identity
-
-
+#Add role to instance profile
 
 aws iam 
