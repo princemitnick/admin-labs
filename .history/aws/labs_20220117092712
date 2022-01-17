@@ -1,0 +1,20 @@
+#Create 2 buckets
+
+princeguru-media-labs
+princeguru-code-labs 
+
+#Create database
+princedb 
+
+#Create SG for WebDMZ and RDS
+
+#Create CloudFront Distribution
+
+#Create Role for S3toEC2
+
+#Create WebServer Instance by deploying Wordpress...
+Ref - bootstrap-script.sh 
+
+#Create Website ....
+
+

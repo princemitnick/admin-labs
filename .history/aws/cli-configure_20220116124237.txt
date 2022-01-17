@@ -55,10 +55,4 @@ aws iam
 
 #S3 Recursive copies
 
-aws s3 cp --recursive /var/www/html/wp-content/uploads s3://princeguru-media-all 
-
-aws s3 cp --recursive /var/www/html s3://princeguru-code-all 
-
-#S3 sync 
-
-aws s3 sync /var/www/html s3://prince-code-all 
+aws s3 cp --recursive /var/www/html/wp-content/uploads s3://princeguru-media-all
