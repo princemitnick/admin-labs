@@ -32,10 +32,4 @@ aws s3 cp --recursive /var/www/html/ s3://princeguru-code-labs
 #Sync S3 every minute
 
 crontab 
-*/1 * * * * root aws s3 sync --delete /var/www/html s3://princeguru-code-labs
-*/1 * * * * root aws s3 sync --delete /var/www/html/wp-content/uploads s3://princeguru-media-labs
-
-#Create Autoscaling Node
-
-
-
+*/1 * * * root aws s3 sync --delete s3://princeguru-code-labs /var/www/html/
