@@ -15,3 +15,5 @@ Sign up :
 - Domain Purchase 
 - DockerHUB
 - Sonarcloud 
+
+Install 
