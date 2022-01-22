@@ -1,0 +1,10 @@
+https://github.com/devopshydclub/
+
+Tools to install : 
+- Virtualbox
+- Git Bash
+- Vagrant
+- Chocolatley
+- JDK8
+- Maven
+- AWS CLI
