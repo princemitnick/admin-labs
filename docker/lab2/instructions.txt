@@ -1,0 +1,40 @@
+#Handcrafting a Container Image 
+
+
+
+docker pull httpd:2.4
+
+docker run --name webtemplate -d httpd:2.4
+
+docker exec -it webtemplate bash 
+
+
+# Get inside of the template
+
+apt update 
+apt install git -y 
+
+git clone  https://github.com/linuxacademy/content-widget-factory-inc.git /tmp/widget-factory-inc
+
+rm htdocs/index.html 
+
+cp -rv /tmp/widget-factory-inc/web/* htdocs/
+
+exit
+
+docker commit  84d87c632e0b example/widgetfactory:v1 
+
+#Get inside webtemplate
+
+rm -rf /tmp/widget-factory-inc 
+apt remove git -y apt autoremove -y && apt clean 
+
+exit 
+
+docker commit  84d87c632e0b example/widgetfactory:v2
+
+docker rmi example/widgetfactory:v1 
+
+docker run -d --name web1 -p 8081:80 example/widgetfactory:v2 
+docker run -d --name web2 -p 8082:80 example/widgetfactory:v2 
+docker run -d --name web3 -p 8083:80 example/widgetfactory:v2 
