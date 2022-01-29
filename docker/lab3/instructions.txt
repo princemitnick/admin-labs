@@ -1,0 +1,42 @@
+#Storing Container Data in Docker Volumes
+
+git clone  https://github.com/linuxacademy/content-widget-factory-inc.git /tmp/widget-factory-inc
+
+
+docker pull bash:latest
+docker pull postgres:12.1
+docker pull httpd:2.4
+
+
+docker run -d --name db1 postgres:12.1
+docker run -d --name db2 postgres:12.1
+
+docker volumes ls 
+docker inspect db1 -f '{{ json .Mounts }}' | python -m json.tool 
+
+# --rm (remove container when stopped)
+
+docker run -d --rm --name dbTmp postgres:12.1
+docker rm db2 dbTmp 
+
+docker volume create website 
+sudo cp -r $HOME/widget-factory-inc/web/* /var/lib/docker/volumes/website/_data/
+
+
+docker run -d --name web1 -p 8088:80 -v website:/usr/local/apache2/htdocs:ro httpd:2.4
+docker run -d --name web2 -p 8089:80 -v website:/usr/local/apache2/htdocs:ro httpd:2.4
+docker run -d --rm --name webTmp -p 8090:80 -v website:/usr/local/apache2/htdocs:ro httpd:2.4
+
+
+docker stop webTmp
+docker volume ls 
+
+docker volume prune 
+
+docker volume inspect website 
+
+#Backup 
+
+tar czf /tmp/website_$(date +%Y-%m-%d-%H%M).tgz -C /var/lib/docker/volumes/website/_data .
+
+docker run -it --rm -v website:/website -v /tmp:/backup bash tar czf /backup/website_$(date +%Y-%m-%d-%H%M).tgz -C /website .

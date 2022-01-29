@@ -1,0 +1,12 @@
+[
+    {
+        "Destination": "/var/lib/postgresql/data",
+        "Driver": "local",
+        "Mode": "",
+        "Name": "09ca2b83ecac1260eb2b2fb381eae42e63c432a46894d9206fa4938cba37b0f5",
+        "Propagation": "",
+        "RW": true,
+        "Source": "/var/lib/docker/volumes/09ca2b83ecac1260eb2b2fb381eae42e63c432a46894d9206fa4938cba37b0f5/_data",
+        "Type": "volume"
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "CreatedAt": "2022-01-29T16:02:28Z",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/website/_data",
+        "Name": "website",
+        "Options": {},
+        "Scope": "local"
+    }
+]
