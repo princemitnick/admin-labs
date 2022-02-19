@@ -1,0 +1,56 @@
+1. Connexion avec ssh 
+
+ssh nom_utilisateur@IP_SERVER
+
+ex : ssh test@10.60.130.2
+
+2. Installer le serveur apache2
+
+sudo apt-get update 
+sudo apt-get install apache2 
+
+3. Tester que apache2 est bien installe 
+
+http://@IP_SERVER
+
+
+
+4. Creer le fichier index.html dans le repertoire /var/www/html 
+
+Acceder au repertoire 
+cd /var/www/html 
+
+sudo rm index.html 
+
+sudo nano index.html 
+
+/var/www/html = Repertoire par defaut d'hebergement du serveur apache2 sur Ubuntu
+
+"""
+<html>
+    <head>MedInfo</head>
+    <body>
+        <h1>MedINFO - Zanmi Lasante </h1>
+        <hr/>
+        <h3> Bienvenue sur la page de MedInfo </h3>
+        <hr/>
+    </body>
+</html>
+"""
+
+5. Verifier status du serveur web 
+
+sudo systemctl status apache2 
+
+6. Stopper le serveur Web 
+
+sudo systemctl stop apache2 
+
+7. Demarrer le serveur web 
+
+sudo systemctl start apache2
+
+8. Redemarrer le serveur apres une modification 
+
+sudo systemctl restart apache2
+

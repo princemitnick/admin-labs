@@ -16,4 +16,3 @@ Sign up :
 - DockerHUB
 - Sonarcloud 
 
-Install 
