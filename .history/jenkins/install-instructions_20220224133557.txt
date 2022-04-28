@@ -14,4 +14,4 @@ sudo apt install openjdk-11-jdk
 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-Jenkins_Token (From GitHub) : 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
+Jenkins_Token (From GitHub) : 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

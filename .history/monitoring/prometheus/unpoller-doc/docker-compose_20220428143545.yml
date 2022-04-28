@@ -1,0 +1,34 @@
+version: "3"
+services:
+  influxdb:
+    container_name: up_influxdb
+    restart: unless-stopped
+    image: influxdb:1.8
+    ports:
+      - '8086:8086'
+    volumes:
+      - /opt/influxdb:/var/lib/influxdb
+    environment:
+      - INFLUXDB_DB=unifi
+      - INFLUXDB_ADMIN_USER=unifi
+      - INFLUXDB_ADMIN_PASSWORD=unifi
+
+  unpoller:
+    container_name: up-poller
+    restart: unless-stopped
+    image: golift/unifi-poller:latest
+    depends_on:
+      - influxdb
+    volumes:
+      - /opt/unpoller:/config
+    environment:
+      - UP_UNIFI_CONTROLLER_0_URL="https://uictl.zanmilasante.org:8443/"
+      - UP_UNIFI_CONTROLLER_0_USER=prstanley
+      - UP_UNIFI_CONTROLLER_0_PASS=jKp6Lb89#d%
+      - UP_INFLUXDB_URL=172.17.0.1:8086
+      - UP_INFLUXDB_DB=unifi
+      - UP_INFLUXDB_USER=unifi 
+      - UP_INFLUXDB_PASS=unifi
+      - UP_INFLUX_INTERVAL=60s
+      - UP_PROMETHEUS_NAMESPACE=unifipoller
+      - UP_PROMETHEUS_HTTP_LISTEN=172.17.0.1:9130

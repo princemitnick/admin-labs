@@ -1,0 +1,3 @@
+sudo docker run --restart always -d  --name unpoller -v /opt/unpoller/unpoller:/config/ golift/unifi-poller
+
+docker run -d -e "UP_INFLUXDB_URL=http://127.0.0.1:8086" -e "UP_INFLUXDB_DB=unifi"  -e "UP_INFLUXDB_USER=admin"  -e "UP_INFLUXDB_PASS=admin"  -e "UP_INFLUXDB_INTERVAL=60s" -e "UP_UNIFI_DEFAULT_URL=https://uictl.zanmilasante.org:8443"  -e "UP_UNIFI_DEFAULT_PASS=jKp6Lb89#d%"  -e "UP_UNIFI_DEFAULT_USER=prstanley"  --name up-poller  --restart always  golift/unifi-poller

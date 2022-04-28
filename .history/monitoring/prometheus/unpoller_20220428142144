@@ -1,0 +1,2 @@
+sudo docker run --restart always -d  --name unpoller -v /opt/unpoller/unpoller:/config/ golift/unifi-poller
+
