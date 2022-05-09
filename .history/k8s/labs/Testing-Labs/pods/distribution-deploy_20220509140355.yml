@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: distribution
+  labels:
+    name: distribution
+spec:
+  containers:
+    - name: employee
+      image: princemitnick/employees:latest
+      ports:
+        - containerPort: 9293

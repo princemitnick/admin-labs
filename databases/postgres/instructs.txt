@@ -1,0 +1,9 @@
+#Connect to database
+
+psql --username=postgres --password --port=5434 --host=127.1
+
+\c postgres 
+
+#Show databases
+
+\l 
