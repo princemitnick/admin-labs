@@ -60,13 +60,3 @@ VALUES (1, 1, 1, 1.40),
 (2, 3, 2, .38),
 (4, 4, 1, 1.00),
 (4, 5, 1, 1.90);
-
-CREATE TABLE IF NOT EXISTS accounts (
-    id BIGSERIAL PRIMARY KEY,
-    name TEXT NOT NULL, 
-    balance NUMERIC(19, 2) NOT NULL
-);
-
-INSERT INTO accounts (name, balance)
-VALUES ('James', 1000),
-('Jamila', 1000);
