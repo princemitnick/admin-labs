@@ -1,0 +1,41 @@
+Ping all hosts
+
+
+ansible -i ini all -m ping 
+
+
+Get facts for all hosts
+ansible all -m setup 
+
+
+Install a package on all hosts
+
+ansible all -m yum -a "name=package state=present"
+
+Restart a service 
+
+ansible all -m service -a "name=service state=restarted" 
+
+Copy a file to all hosts 
+
+ansible all -m copy -a "src=file.txt dest/path/to/destination"
+
+
+Run a shel commad on all hosts 
+
+ansible all -m shell -a "command"
+
+
+Run command in a specific hosts
+
+ansible <hostname> -m command -a "command" 
+
+
+
+Create user 
+
+
+ansible -i ini all -b -m user -a "name=username"
+
+
+ansible -i ini all -b -m file -a "path=/home/ansible/prince state=directory owner=ansible group=test mode=0755"

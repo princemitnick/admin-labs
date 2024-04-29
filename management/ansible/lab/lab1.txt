@@ -1,0 +1,17 @@
+Install Ansile
+
+Create user Ansile on controller and workstation
+Create pre-shared key, copy pre-shared key to workstation
+
+Give sudo privilege to user ansible
+ansible ALL=(ALL)       NOPASSWD:ALL
+
+
+
+Create inventory 
+
+
+ansible-playbook -i ini setup-git.yaml 
+
+
+ansible -i inventory all -m ping
