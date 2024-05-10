@@ -1,0 +1,18 @@
+docker pull httpd:2.4
+
+docker run --name webtemplate -d httpd:2.4 
+
+docker exec -it webtemplate bash
+
+
+docker commit  dafd513d8f2f example/widgetfactory:v1 
+
+
+remove git apt autoremove apt clean
+
+
+docker run -d --name web1 -p 8081:80 example/widgetfactory:v2
+
+docker run -d --name web1 -p 8082:80 example/widgetfactory:v2
+
+docker run -d --name web1 -p 8083:80 example/widgetfactory:v2

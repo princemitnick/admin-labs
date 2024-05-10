@@ -1,4 +1,4 @@
-sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.30.0 --apiserver-advertise-address=10.244.66.64
+sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.30.0 --apiserver-advertise-address=10.244.105.197
 
 mkdir -p $HOME/.kube
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -27,7 +27,6 @@ mkdir -p $HOME/.kube
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 
-sudo kubeadm join 10.60.120.67:6443 --token fkz2oe.ijuwkm0pcyn1qym9 \
-	--discovery-token-ca-cert-hash sha256:1130a8f9b19a22b6a36a43e05fafa0d430757bc00b41ba0f79236de7c29c586d
-
+kubeadm join 10.244.105.197:6443 --token qeyci9.s94qyhjxu2iiq2y9 \
+	--discovery-token-ca-cert-hash sha256:0250fa91b2711272b5a9f532734bd8a322e7df4c292c92b55f9e2f159a01bd13
 
